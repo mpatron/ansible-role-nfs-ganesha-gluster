@@ -30,7 +30,7 @@
 - name: Ensure NFS-Ganesha will reinstall if the DEB source was just added.
   apt:
     name:
-      - nfs-ganesha-gluster 
+      - nfs-ganesha-gluster
     state: absent
   when: nfs-ganesha_deb_source_added.changed
   tags: ['skip_ansible_lint']
@@ -38,6 +38,6 @@
 - name: Ensure NFS-Ganesha is installed.
   apt:
     name:
-      - nfs-ganesha-gluster 
+      - nfs-ganesha-gluster
     state: present
     default_release: "{{ nfs-ganesha_default_release }}"

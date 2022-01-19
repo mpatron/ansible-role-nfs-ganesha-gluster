@@ -1,5 +1,5 @@
 ---
-nfs-ganesha_daemon: nfs-ganesha 
+nfs-ganesha_daemon: nfs-ganesha
 
 # For Ubuntu.
 nfs-ganesha_default_release: ""
@@ -11,4 +11,4 @@ nfs-ganesha_gpg_key_version: "3"
 nfs-ganesha_deb_version: "LATEST"
 
 nfs-ganesha_volume_name: "kubegfs"
-nfs-ganesha_hostname:  "192.168.56.140"
+nfs-ganesha_hostname: "192.168.56.140"
