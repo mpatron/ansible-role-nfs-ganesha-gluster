@@ -9,7 +9,7 @@
 
 - name: Ensure repository pubkey for NFS-Ganesha is present.
   apt_key:
-    url: 'https://download.gluster.org/pub/gluster/nfs-ganesha/{{ nfs-ganesha_gpg_key_version }}/rsa.pub'
+    url: 'https://download.gluster.org/pub/gluster/nfs-ganesha/{{ nfs_ganesha_gpg_key_version }}/rsa.pub'
     state: present
   register: nfs-ganesha_pub_key_added
 
@@ -20,7 +20,7 @@
 
 - name: Ensure debian repo is present.
   apt_repository:
-    repo: "deb https://download.gluster.org/pub/gluster/nfs-ganesha/{{ nfs-ganesha_deb_version }}/Debian/\
+    repo: "deb https://download.gluster.org/pub/gluster/nfs-ganesha/{{ nfs_ganesha_deb_version }}/Debian/\
       {{ ansible_distribution_release }}/{{ deb_architecture.stdout }}/apt {{ ansible_distribution_release }} \
       main"
     state: present
@@ -40,4 +40,4 @@
     name:
       - nfs-ganesha-gluster
     state: present
-    default_release: "{{ nfs-ganesha_default_release }}"
+    default_release: "{{ nfs_ganesha_default_release }}"

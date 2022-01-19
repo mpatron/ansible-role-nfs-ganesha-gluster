@@ -6,11 +6,11 @@
 
 - name: Ensure PPA for NFS-Ganesha is present.
   apt_repository:
-    repo: 'ppa:nfs-ganesha/nfs-ganesha-{{ nfs-ganesha_ppa_version }}'
+    repo: 'ppa:nfs-ganesha/nfs-ganesha-{{ nfs_ganesha_ppa_version }}'
     state: present
     update_cache: true
   register: nfs-ganesha_ppa_added
-  when: nfs-ganesha_ppa_use
+  when: nfs_ganesha_ppa_use
 
 - name: Ensure NFS-Ganesha will reinstall if the PPA was just added.
   apt:
@@ -25,4 +25,4 @@
     name:
       - nfs-ganesha-gluster
     state: present
-    default_release: "{{ nfs-ganesha_default_release }}"
+    default_release: "{{ nfs_ganesha_default_release }}"
