@@ -1,4 +1,4 @@
-Role Name
+Ansible Role: NFS Ganesha Gluster
 =========
 
 The purpose of this role is to deploy nfs-ganesha [https://github.com/nfs-ganesha/nfs-ganesha].
