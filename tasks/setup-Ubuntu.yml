@@ -9,7 +9,7 @@
     repo: 'ppa:nfs-ganesha/nfs-ganesha-{{ nfs_ganesha_ppa_version }}'
     state: present
     update_cache: true
-  register: nfs-ganesha_ppa_added
+  register: nfs_ganesha_ppa_added
   when: nfs_ganesha_ppa_use
 
 - name: Ensure NFS-Ganesha will reinstall if the PPA was just added.
@@ -17,7 +17,7 @@
     name:
       - nfs-ganesha-gluster
     state: absent
-  when: nfs-ganesha_ppa_added.changed
+  when: nfs_ganesha_ppa_added.changed
   tags: ['skip_ansible_lint']
 
 - name: Ensure NFS-Ganesha is installed.
