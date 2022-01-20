@@ -21,4 +21,6 @@
     src: etc_ganesha_ganesha.conf.j2
     desc: /etc/ganesha/ganesha.conf
     mode: 0644
-    owner: root:root
+    owner: root
+    group: root
+  notify: reload nfs-ganesha
