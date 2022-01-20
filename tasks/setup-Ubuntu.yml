@@ -39,14 +39,31 @@
 - name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
   apt:
     name:
-      - libntirpc
+      - libntirpc3
     state: absent
-  when: libntirpc_ppa_added.changed
+  when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "3.0"
   tags: ['skip_ansible_lint']
 
 - name: Ensure NFS-Ganesha  (libntirpc) is installed.
   apt:
     name:
-      - libntirpc
+      - libntirpc3
     state: present
+    when: nfs_ganesha_ppa_version == "3.0"
+    default_release: "{{ nfs_ganesha_default_release }}"
+
+- name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
+  apt:
+    name:
+      - libntirpc4
+    state: absent
+  when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "4.0"
+  tags: ['skip_ansible_lint']
+
+- name: Ensure NFS-Ganesha  (libntirpc) is installed.
+  apt:
+    name:
+      - libntirpc4
+    state: present
+    when: nfs_ganesha_ppa_version == "4.0"
     default_release: "{{ nfs_ganesha_default_release }}"
