@@ -41,7 +41,7 @@
     name:
       - libntirpc
     state: absent
-  when: libntirpc_added.changed
+  when: libntirpc_ppa_added.changed
   tags: ['skip_ansible_lint']
 
 - name: Ensure NFS-Ganesha  (libntirpc) is installed.
