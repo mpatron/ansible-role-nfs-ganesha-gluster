@@ -49,8 +49,8 @@
     name:
       - libntirpc3
     state: present
-    when: nfs_ganesha_ppa_version == "3.0"
     default_release: "{{ nfs_ganesha_default_release }}"
+  when: nfs_ganesha_ppa_version == "3.0"
 
 - name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
   apt:
@@ -65,5 +65,5 @@
     name:
       - libntirpc4
     state: present
-    when: nfs_ganesha_ppa_version == "4.0"
     default_release: "{{ nfs_ganesha_default_release }}"
+  when: nfs_ganesha_ppa_version == "4.0"
