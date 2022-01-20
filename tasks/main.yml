@@ -19,7 +19,7 @@
 - name: ganesha-gluster file configuration
   template:
     src: etc_ganesha_ganesha.conf.j2
-    desc: /etc/ganesha/ganesha.conf
+    dest: /etc/ganesha/ganesha.conf
     mode: 0644
     owner: root
     group: root
