@@ -4,6 +4,8 @@
     name: dirmngr
     state: present
 
+# The 2 repos
+
 - name: Ensure PPA for NFS-Ganesha is present.
   apt_repository:
     repo: 'ppa:nfs-ganesha/nfs-ganesha-{{ nfs_ganesha_ppa_version }}'
@@ -12,6 +14,15 @@
   register: nfs_ganesha_ppa_added
   when: nfs_ganesha_ppa_use
 
+- name: Ensure PPA for NFS-Ganesha (libntirpc) is present.
+  apt_repository:
+    repo: 'ppa:nfs-ganesha/libntirpc-{{ nfs_ganesha_ppa_version }}'
+    state: present
+    update_cache: true
+  register: libntirpc_ppa_added
+  when: nfs_ganesha_ppa_use
+
+# Binary nfs-ganesha-gluster
 - name: Ensure NFS-Ganesha will reinstall if the PPA was just added.
   apt:
     name:
@@ -26,16 +37,8 @@
       - nfs-ganesha-gluster
     state: present
     default_release: "{{ nfs_ganesha_default_release }}"
-#
-# sudo add-apt-repository ppa:nfs-ganesha/libntirpc-3.0
-- name: Ensure PPA for NFS-Ganesha (libntirpc) is present.
-  apt_repository:
-    repo: 'ppa:nfs-ganesha/libntirpc-{{ nfs_ganesha_ppa_version }}'
-    state: present
-    update_cache: true
-  register: libntirpc_ppa_added
-  when: nfs_ganesha_ppa_use
 
+# Binary libntirpc3 if condition
 - name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
   apt:
     name:
@@ -52,6 +55,7 @@
     default_release: "{{ nfs_ganesha_default_release }}"
   when: nfs_ganesha_ppa_version == "3.0"
 
+# Binary libntirpc4 if condition
 - name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
   apt:
     name:
