@@ -26,3 +26,27 @@
       - nfs-ganesha-gluster
     state: present
     default_release: "{{ nfs_ganesha_default_release }}"
+#
+# sudo add-apt-repository ppa:nfs-ganesha/libntirpc-3.0
+- name: Ensure PPA for NFS-Ganesha (libntirpc) is present.
+  apt_repository:
+    repo: 'ppa:nfs-ganesha/libntirpc-{{ nfs_ganesha_ppa_version }}'
+    state: present
+    update_cache: true
+  register: libntirpc_ppa_added
+  when: nfs_ganesha_ppa_use
+
+- name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
+  apt:
+    name:
+      - libntirpc
+    state: absent
+  when: libntirpc_added.changed
+  tags: ['skip_ansible_lint']
+
+- name: Ensure NFS-Ganesha  (libntirpc) is installed.
+  apt:
+    name:
+      - libntirpc
+    state: present
+    default_release: "{{ nfs_ganesha_default_release }}"
