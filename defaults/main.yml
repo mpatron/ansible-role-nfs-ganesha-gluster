@@ -4,7 +4,7 @@ nfs_ganesha_daemon: nfs-ganesha
 # For Ubuntu.
 nfs_ganesha_default_release: ""
 nfs_ganesha_ppa_use: true
-nfs_ganesha_ppa_version: "3.0" # "3.0" or "4.0"
+nfs_ganesha_ppa_version: "3.0" # "3.0" or "4"
 
 # For Debian.
 nfs_ganesha_gpg_key_version: "3"
