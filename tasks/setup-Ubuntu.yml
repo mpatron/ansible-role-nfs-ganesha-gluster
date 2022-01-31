@@ -61,7 +61,7 @@
     name:
       - libntirpc4
     state: absent
-  when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "4.0"
+  when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "4"
   tags: ['skip_ansible_lint']
 
 - name: Ensure NFS-Ganesha  (libntirpc) is installed.
@@ -70,4 +70,4 @@
       - libntirpc4
     state: present
     default_release: "{{ nfs_ganesha_default_release }}"
-  when: nfs_ganesha_ppa_version == "4.0"
+  when: nfs_ganesha_ppa_version == "4"
