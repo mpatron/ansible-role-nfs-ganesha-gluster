@@ -28,6 +28,8 @@
     name:
       - nfs-ganesha-gluster
     state: absent
+    update_cache: yes
+    cache_valid_time: 3600
   when: nfs_ganesha_ppa_added.changed
   tags: ['skip_ansible_lint']
 
@@ -35,6 +37,8 @@
   apt:
     name:
       - nfs-ganesha-gluster
+    update_cache: yes
+    cache_valid_time: 3600
     state: present
     default_release: "{{ nfs_ganesha_default_release }}"
 
@@ -43,6 +47,8 @@
   apt:
     name:
       - libntirpc3
+    update_cache: yes
+    cache_valid_time: 3600
     state: absent
   when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "3.0"
   tags: ['skip_ansible_lint']
@@ -51,6 +57,8 @@
   apt:
     name:
       - libntirpc3
+    update_cache: yes
+    cache_valid_time: 3600
     state: present
     default_release: "{{ nfs_ganesha_default_release }}"
   when: nfs_ganesha_ppa_version == "3.0"
@@ -60,6 +68,8 @@
   apt:
     name:
       - libntirpc4
+    update_cache: yes
+    cache_valid_time: 3600
     state: absent
   when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "4"
   tags: ['skip_ansible_lint']
@@ -68,6 +78,8 @@
   apt:
     name:
       - libntirpc4
+    update_cache: yes
+    cache_valid_time: 3600
     state: present
     default_release: "{{ nfs_ganesha_default_release }}"
   when: nfs_ganesha_ppa_version == "4"
