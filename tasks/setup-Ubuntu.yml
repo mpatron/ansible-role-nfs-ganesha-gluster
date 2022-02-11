@@ -10,7 +10,7 @@
   apt_repository:
     repo: 'ppa:nfs-ganesha/nfs-ganesha-{{ nfs_ganesha_ppa_version }}'
     state: present
-    update_cache: true
+    update_cache: yes
   register: nfs_ganesha_ppa_added
   when: nfs_ganesha_ppa_use
 
@@ -18,7 +18,7 @@
   apt_repository:
     repo: 'ppa:nfs-ganesha/libntirpc-{{ nfs_ganesha_ppa_version }}'
     state: present
-    update_cache: true
+    update_cache: yes
   register: libntirpc_ppa_added
   when: nfs_ganesha_ppa_use
 
