@@ -6,6 +6,8 @@ nfs_ganesha_default_release: ""
 nfs_ganesha_ppa_use: true
 nfs_ganesha_ppa_version: "4" # "3.0" or "4"
 
+nfs_libntirpc_ppa_version: "3.0"
+
 # For Debian.
 nfs_ganesha_gpg_key_version: "4"
 nfs_ganesha_deb_version: "LATEST"

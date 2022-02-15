@@ -16,7 +16,7 @@
 
 - name: Ensure PPA for NFS-Ganesha (libntirpc) is present.
   apt_repository:
-    repo: 'ppa:nfs-ganesha/libntirpc-{{ nfs_ganesha_ppa_version }}'
+    repo: 'ppa:nfs-ganesha/libntirpc-{{ nfs_libntirpc_ppa_version }}'
     state: present
     update_cache: yes
   register: libntirpc_ppa_added
@@ -30,7 +30,6 @@
     update_cache: yes
     cache_valid_time: 3600
     state: absent
-  when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "3.0"
   tags: ['skip_ansible_lint']
 
 - name: Ensure NFS-Ganesha  (libntirpc) is installed.
@@ -41,28 +40,6 @@
     cache_valid_time: 3600
     state: present
     default_release: "{{ nfs_ganesha_default_release }}"
-  when: nfs_ganesha_ppa_version == "3.0"
-
-# Binary libntirpc4 if condition
-- name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
-  apt:
-    name:
-      - libntirpc4
-    update_cache: yes
-    cache_valid_time: 3600
-    state: absent
-  when: libntirpc_ppa_added.changed and nfs_ganesha_ppa_version == "4"
-  tags: ['skip_ansible_lint']
-
-- name: Ensure NFS-Ganesha  (libntirpc) is installed.
-  apt:
-    name:
-      - libntirpc4
-    update_cache: yes
-    cache_valid_time: 3600
-    state: present
-    default_release: "{{ nfs_ganesha_default_release }}"
-  when: nfs_ganesha_ppa_version == "4"
 
 # Binary nfs-ganesha-gluster
 - name: Ensure NFS-Ganesha will reinstall if the PPA was just added.
