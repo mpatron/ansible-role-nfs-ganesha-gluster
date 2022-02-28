@@ -26,7 +26,7 @@
 - name: Ensure NFS-Ganesha  (libntirpc) will reinstall if the PPA was just added.
   apt:
     name:
-      - libntirpc3
+      - libntirpc3.0
     update_cache: yes
     cache_valid_time: 3600
     state: absent
@@ -35,7 +35,7 @@
 - name: Ensure NFS-Ganesha  (libntirpc) is installed.
   apt:
     name:
-      - libntirpc3
+      - libntirpc3.0
     update_cache: yes
     cache_valid_time: 3600
     state: present
