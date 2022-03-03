@@ -17,7 +17,7 @@ EXPORT {
       # any name
       name = GLUSTER;
       # hostname or IP address of this Node
-      hostname="{{ hostvars[inventory_hostname].ansible_host }}";
+      hostname="{{ hostvars[inventory_hostname].ansible_fqdn }}";
       # Gluster volume name
       volume="{{ nfs_ganesha_volume_name }}";
       enable_upcall = true;
